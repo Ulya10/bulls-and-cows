@@ -1,6 +1,10 @@
+const alldigits = "0123456789abcdef";
+
 export const createDigitValidator =
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  (_base: number) =>
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    (_char: string): boolean =>
-      false;
+  (base: number) =>
+  (char: string): boolean => {
+    if (typeof char !== "string" || char.length !== 1) {
+      return false;
+    }
+    return alldigits.slice(0, base).includes(char.toLowerCase());
+  };

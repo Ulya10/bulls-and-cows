@@ -1,6 +1,6 @@
-import type { GameState } from "../core/state";
-import { countPossibleSecrets } from "../core/countPossibleSecrets";
-import { createDigitValidator } from "../core/createDigitValidator";
+import type { GameState } from "../core/state.js";
+import { countPossibleSecrets } from "../core/countPossibleSecrets.js";
+import { createDigitValidator } from "../core/createDigitValidator.js";
 
 const BASES: ReadonlyArray<{ name: string; value: number }> = [
   { name: "bin", value: 2 },

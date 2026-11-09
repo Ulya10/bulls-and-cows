@@ -1,4 +1,4 @@
-import { createApp } from "./ui/handlers";
+import { createApp } from "./ui/handlers.js";
 
 const root = document.createElement("div");
 root.id = "root";

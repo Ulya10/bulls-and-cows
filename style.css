@@ -9,3 +9,55 @@ body {
     -apple-system,
     sans-serif;
 }
+
+#root {
+  max-width: 640px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+section {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 8%);
+}
+
+label {
+  display: block;
+  margin: 0.75rem 0;
+}
+
+select,
+input,
+button {
+  font: inherit;
+  padding: 0.4rem 0.6rem;
+  margin-left: 0.5rem;
+}
+
+button {
+  cursor: pointer;
+  background: #2b6cb0;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+}
+
+button.secondary {
+  background: #718096;
+}
+
+button:hover {
+  filter: brightness(1.1);
+}
+
+.history {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.hint {
+  color: #555;
+  font-size: 0.9rem;
+}

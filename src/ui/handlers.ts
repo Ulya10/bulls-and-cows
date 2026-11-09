@@ -5,12 +5,12 @@ import {
   finishGame,
   isGameWon,
   type GameState,
-} from "../core/state";
-import { generateSecret } from "../core/generateSecret";
-import { evaluateGuess } from "../core/evaluateGuess";
-import { isValidGuess } from "../core/isValidGuess";
-import { renderSettings, renderGame, renderWin, type SettingsForm } from "./render";
-import { saveRecord } from "./storage";
+} from "../core/state.js";
+import { generateSecret } from "../core/generateSecret.js";
+import { evaluateGuess } from "../core/evaluateGuess.js";
+import { isValidGuess } from "../core/isValidGuess.js";
+import { renderSettings, renderGame, renderWin, type SettingsForm } from "./render.js";
+import { saveRecord } from "./storage.js";
 
 export type App = {
   root: HTMLElement;
@@ -68,6 +68,8 @@ export const createApp = (root: HTMLElement): App => {
   };
 
   const callbacks = { onStart, onGuess, onNewGame };
+
+  refresh();
 
   return {
     root,

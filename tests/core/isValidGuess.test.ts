@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { isValidGuess } from "../../src/core/isValidGuess";
+import { isValidGuess } from "../../src/core/isValidGuess.js";
 
 describe("isValidGuess", () => {
   it("returns true for a valid guess", () => {

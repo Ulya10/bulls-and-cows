@@ -20,32 +20,45 @@ export type GameState = {
   duration: number;
 };
 
-/* eslint-disable @typescript-eslint/no-unused-vars */
+const DEFAULT_SETTINGS: Settings = { length: 4, base: 10 };
+
 export const createInitialState = (): GameState => ({
   status: "settings",
-  settings: { length: 0, base: 0 },
+  settings: DEFAULT_SETTINGS,
   secret: "",
   history: [],
   startTime: 0,
   duration: 0,
 });
 
-export const startGame = (_settings: Settings, _secret: string, _now: number): GameState => ({
-  status: "settings",
-  settings: { length: 0, base: 0 },
-  secret: "",
+export const startGame = (settings: Settings, secret: string, now: number): GameState => ({
+  status: "playing",
+  settings,
+  secret,
   history: [],
-  startTime: 0,
+  startTime: now,
   duration: 0,
 });
 
 export const addAttempt = (
   state: GameState,
-  _guess: string,
-  _evaluation: { bulls: number; cows: number },
-): GameState => state;
+  guess: string,
+  evaluation: { bulls: number; cows: number },
+): GameState => ({
+  ...state,
+  history: [...state.history, { guess, ...evaluation }],
+});
 
-export const isGameWon = (_state: GameState): boolean => false;
+export const isGameWon = (state: GameState): boolean => {
+  if (state.history.length === 0) {
+    return false;
+  }
+  const last = state.history[state.history.length - 1];
+  return last.bulls === state.settings.length;
+};
 
-export const finishGame = (state: GameState, _now: number): GameState => state;
-/* eslint-enable @typescript-eslint/no-unused-vars */
+export const finishGame = (state: GameState, now: number): GameState => ({
+  ...state,
+  status: "won",
+  duration: now - state.startTime,
+});

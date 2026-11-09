@@ -10,6 +10,7 @@ import { generateSecret } from "../core/generateSecret";
 import { evaluateGuess } from "../core/evaluateGuess";
 import { isValidGuess } from "../core/isValidGuess";
 import { renderSettings, renderGame, renderWin, type SettingsForm } from "./render";
+import { saveRecord } from "./storage";
 
 export type App = {
   root: HTMLElement;
@@ -49,6 +50,13 @@ export const createApp = (root: HTMLElement): App => {
 
     if (isGameWon(state)) {
       state = finishGame(state, Date.now());
+      saveRecord({
+        length: state.settings.length,
+        base: state.settings.base,
+        attempts: state.history.length,
+        durationMs: state.duration,
+        at: Date.now(),
+      });
     }
 
     refresh();
